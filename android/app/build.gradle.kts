@@ -3,7 +3,10 @@ plugins {
     id("kotlin-android")
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id("dev.flutter.flutter-gradle-plugin")
+    // Reads google-services.json and injects the OAuth client ID into the build.
+    id("com.google.gms.google-services")
 }
+
 
 android {
     namespace = "com.example.biomteric_signin"

@@ -25,13 +25,16 @@ class _EmailAuthScreenState extends State<EmailAuthScreen> {
     // 1. Validations using Extensions
     if (!_emailController.text.isValidEmail) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Invalid Email Format'), backgroundColor: Colors.redAccent),
+        const SnackBar(
+          content: Text('Invalid Email Format'),
+          backgroundColor: Colors.redAccent,
+        ),
       );
       return;
     }
 
     final viewModel = Provider.of<AuthViewModel>(context, listen: false);
-    
+
     // 2. Call ViewModel
     final success = await viewModel.loginWithEmail(
       _emailController.text.trim(),
@@ -40,7 +43,10 @@ class _EmailAuthScreenState extends State<EmailAuthScreen> {
 
     if (!success && mounted) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(viewModel.errorMessage), backgroundColor: Colors.redAccent),
+        SnackBar(
+          content: Text(viewModel.errorMessage),
+          backgroundColor: Colors.redAccent,
+        ),
       );
     } else if (success && mounted) {
       Navigator.pop(context); // Go back to main/home routing takes over
@@ -50,7 +56,10 @@ class _EmailAuthScreenState extends State<EmailAuthScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Email Authentication'), backgroundColor: const Color(0xFF1E1E1E)),
+      appBar: AppBar(
+        title: const Text('Email Authentication'),
+        backgroundColor: const Color(0xFF1E1E1E),
+      ),
       body: Center(
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(24.0),
@@ -60,16 +69,30 @@ class _EmailAuthScreenState extends State<EmailAuthScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  const Icon(Icons.email_outlined, size: 80, color: Color(0xFF6C63FF)),
+                  const Icon(
+                    Icons.email_outlined,
+                    size: 80,
+                    color: Color(0xFF6C63FF),
+                  ),
                   const SizedBox(height: 24),
-                  const Text('Email Login', textAlign: TextAlign.center, style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: Colors.white)),
+                  const Text(
+                    'Email Login',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 28,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
                   const SizedBox(height: 48),
                   TextField(
                     controller: _emailController,
                     decoration: InputDecoration(
                       labelText: 'Email',
                       prefixIcon: const Icon(Icons.person_outline),
-                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
                       filled: true,
                       fillColor: const Color(0xFF1E1E1E),
                     ),
@@ -81,7 +104,9 @@ class _EmailAuthScreenState extends State<EmailAuthScreen> {
                     decoration: InputDecoration(
                       labelText: 'Password',
                       prefixIcon: const Icon(Icons.lock_outline),
-                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
                       filled: true,
                       fillColor: const Color(0xFF1E1E1E),
                     ),
@@ -95,9 +120,18 @@ class _EmailAuthScreenState extends State<EmailAuthScreen> {
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Theme.of(context).primaryColor,
                         padding: const EdgeInsets.symmetric(vertical: 16),
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
                       ),
-                      child: const Text('Sign In', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white)),
+                      child: const Text(
+                        'Sign In',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
                     ),
                 ],
               );

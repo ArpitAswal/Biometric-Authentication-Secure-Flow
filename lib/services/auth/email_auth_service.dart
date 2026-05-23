@@ -15,10 +15,10 @@ class EmailAuthService implements AuthService {
   @override
   Future<AccountModel?> login() async {
     try {
-      final response = await _dioClient.post('/login', data: {
-        'email': email,
-        'password': password,
-      });
+      final response = await _dioClient.post(
+        '/login',
+        data: {'email': email, 'password': password},
+      );
 
       final data = response.data;
       return AccountModel(
@@ -41,15 +41,20 @@ class EmailAuthService implements AuthService {
   }
 
   @override
-  Future<AccountModel?> fetchUserProfile(String token, String? name) async {
-    // In a real app, this makes a GET request using the JWT token
+  Future<AccountModel?> fetchUserProfile(
+    String token,
+    String? savedEmail, {
+    String? displayName,
+  }) async {
+    // In a real app, this makes a GET /profile request using the JWT token.
     // e.g. _dioClient.get('/profile', headers: {'Authorization': 'Bearer $token'});
     await Future.delayed(const Duration(seconds: 1));
     if (token.isNotEmpty) {
-       return AccountModel(
+      return AccountModel(
         id: '12345',
-        username: 'Returning ${name?.split('@')[0].toString()}',
-        email: 'user@example.com',
+        username:
+            displayName ?? 'Returning ${savedEmail?.split('@')[0] ?? 'User'}',
+        email: savedEmail ?? 'user@example.com',
         authProvider: 'email',
       );
     }

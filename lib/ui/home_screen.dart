@@ -10,7 +10,7 @@ class HomeScreen extends StatelessWidget {
     return Consumer<AuthViewModel>(
       builder: (context, viewModel, child) {
         final user = viewModel.currentUser;
-        
+
         return Scaffold(
           appBar: AppBar(
             title: const Text('Dashboard'),
@@ -74,10 +74,7 @@ class HomeScreen extends StatelessWidget {
                     decoration: BoxDecoration(
                       color: const Color(0xFF1E1E1E),
                       borderRadius: BorderRadius.circular(16),
-                      border: Border.all(
-                        color: Colors.grey[800]!,
-                        width: 1,
-                      ),
+                      border: Border.all(color: Colors.grey[800]!, width: 1),
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -87,7 +84,9 @@ class HomeScreen extends StatelessWidget {
                             Container(
                               padding: const EdgeInsets.all(12),
                               decoration: BoxDecoration(
-                                color: Theme.of(context).primaryColor.withAlpha(25),
+                                color: Theme.of(
+                                  context,
+                                ).primaryColor.withAlpha(25),
                                 borderRadius: BorderRadius.circular(12),
                               ),
                               child: Icon(
@@ -151,7 +150,10 @@ class HomeScreen extends StatelessWidget {
                           ),
                           TextButton(
                             onPressed: () => Navigator.pop(context, true),
-                            child: const Text('Remove', style: TextStyle(color: Colors.redAccent)),
+                            child: const Text(
+                              'Remove',
+                              style: TextStyle(color: Colors.redAccent),
+                            ),
                           ),
                         ],
                       ),
@@ -160,13 +162,18 @@ class HomeScreen extends StatelessWidget {
                       await viewModel.removeAccountFromDevice();
                     }
                   },
-                  icon: const Icon(Icons.delete_forever, color: Colors.redAccent),
+                  icon: const Icon(
+                    Icons.delete_forever,
+                    color: Colors.redAccent,
+                  ),
                   label: const Text('Remove Account from Device'),
                   style: OutlinedButton.styleFrom(
                     foregroundColor: Colors.redAccent,
                     side: const BorderSide(color: Colors.redAccent),
                     padding: const EdgeInsets.symmetric(vertical: 16),
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
                     minimumSize: const Size(double.infinity, 50),
                   ),
                 ),

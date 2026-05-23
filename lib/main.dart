@@ -8,7 +8,9 @@ void main() {
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => AuthViewModel()..checkBiometricAvailability()),
+        ChangeNotifierProvider(
+          create: (_) => AuthViewModel()..checkBiometricAvailability(),
+        ),
       ],
       child: const BiometricApp(),
     ),
