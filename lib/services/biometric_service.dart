@@ -1,6 +1,8 @@
 import 'package:local_auth/local_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/foundation.dart';
+import 'package:local_auth_android/local_auth_android.dart';
+import 'package:local_auth_darwin/local_auth_darwin.dart';
 
 
 /// Singleton service responsible for interfacing with the device's
@@ -34,6 +36,15 @@ class BiometricService {
         localizedReason: localizedReason,
         persistAcrossBackgrounding: true, // Keep the prompt open if the app goes to the background
         biometricOnly: false, // Fallback to device PIN if biometric fails
+        authMessages: const <AuthMessages>[
+          AndroidAuthMessages(
+            signInTitle: 'Unlock Biometric SignIn',
+            cancelButton: 'No thanks',
+            signInHint: 'Scan your fingerprint to authenticate'
+          ),
+          IOSAuthMessages(cancelButton: 'No thanks',
+          localizedFallbackTitle: 'Use PIN or Device password'),
+        ],
       );
     } on PlatformException catch (e) {
       debugPrint('Error during biometric authentication: $e');

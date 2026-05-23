@@ -4,6 +4,13 @@ A Flutter application demonstrating standard biometric authentication (Fingerpri
 
 ---
 
+## 📱 Try the App
+You can download and install the latest working version of the app directly on your Android device:
+
+[![Download APK](https://img.shields.io/badge/Download-APK-green?style=for-the-badge&logo=android)](https://github.com/ArpitAswal/Biometric-Authentication-Secure-Flow/releases/download/v1.0.0/app-release.apk)
+
+---
+
 ## ⚙️ Google Sign-In Setup (Required before running)
 
 Google Sign-In requires a `google-services.json` file that links your Android app to a Firebase project. This file contains your API keys and client IDs, etc.

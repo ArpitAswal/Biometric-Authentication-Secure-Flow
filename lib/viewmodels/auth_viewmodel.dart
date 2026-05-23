@@ -144,7 +144,7 @@ class AuthViewModel extends ChangeNotifier {
       }
 
       final authenticated = await _biometricService.authenticate(
-        localizedReason: 'Please authenticate to sign in securely',
+        localizedReason: 'Unlock your screen with PIN, pattern, password, face or fingerprint',
       );
 
       if (!authenticated) {
